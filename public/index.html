@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teplov Scoring</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="jquery.maskedinput-master/dist/jquery.maskedinput.js"></script>
+    <script src="inputmask.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+<div class="card">
+    <form action="http://localhost:3000/scoring" method="post">
+        <h1>Форма для заполнения</h1>
+        <p><i>Заполните форму</i></p>
+        <fieldset style="margin-bottom: 25px;">
+            <legend>Contacts</legend>
+            <label for="name">Имя и Фамилия<em>*</em></label>
+            <input type="text" class="writter" id="name" name="name" placeholder="Иван Иванов" value="Теплов Артем" pattern="^[А-Яа-яЁё\s]+$" autofocus required><br>
+            <label for="telephone">Телефон<em>*</em></label>
+            <input type="text" class="writter" id="telephone" name="telephone" placeholder="+7(999)999-99-99"><br>
+            <label for="email">Электронная почта<em>*</em></label>
+            <input type="text" class="writter" id="email" name="email" placeholder="mail@box.ru" autofocus required><br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Данные для проверки</legend>
+            <label for="gender">Пол</label>
+            <select name="gender" id="gender">
+                <option value="male">Мужской</option>
+                <option value="female">Женский</option>
+            </select><br>
+            <label for="birthDate">Дата рождения<em>*</em></label>
+            <input type="date" name="birthDate" id="birthDate" value="2000-12-19" required><br>
+            <label for="periofLife">Срок проживания в регионе</label>
+            <input type="number" name="periofLife" id="periofLife" min="0" max="100" value="4" required><br>
+            <label for="profession">Профессия</label>
+            <select name="profession" id="profession">
+                <option value="driver">Водитель</option>
+                <option value="policeman">Полицейский</option>
+                <option value="pilot">Пилот</option>
+                <option value="judge">Судья</option>
+                <option value="developer">Программист</option>
+                <option value="teacher">Преподаватель</option>
+                <option value="other">Другое</option>
+            </select><br>
+            <label for="sphere">Сфера деятельности</label>
+            <select name="sphere" id="sphere">
+                <option value="public">Общественная</option>
+                <option value="other">Другое</option>
+            </select><br>
+            <label for="periodWork">Период работы в организации<em>*</em></label>
+            <input type="number" name="periodWork" id="periodWork" min="0" max="50" value="4" required><br>
+            <label for="bankAccount">Наличие счета в банке</label>
+            <input type="checkbox" name="bankAccount" id="bankAccount"><br>
+            <label for="realEstate">Наличие недвижимости</label>
+            <input type="checkbox" name="realEstate" id="realEstate"><br>
+            <label for="insurencePolice">Наличие строхового полиса</label>
+            <input type="checkbox" name="insurencePolice" id="insurencePolice">
+        </fieldset>
+        <input type="submit" value="Send" id="sendForm">
+    </form>
+</div>
+</body>
+</html>
+<script>
+    $("#telephone").mask("+7(999)999-99-99",{
+        autoclear:false
+    });
+    $(document).ready(function(){
+        $("#email").inputmask("email")
+    });
+</script>
